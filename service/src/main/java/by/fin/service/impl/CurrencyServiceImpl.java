@@ -105,9 +105,9 @@ public class CurrencyServiceImpl implements CurrencyService {
 			throw new CurrencyNotFoundException(curAbbreviation);
 		}
 		
-		List<LocalDate> dates = weekendsRepository.findByCalendarDateBetween(Date.from(date.atStartOfDay(ZoneId.systemDefault()).toInstant()), Date.from(date.plusDays(date.lengthOfMonth()-1).atStartOfDay(ZoneId.systemDefault()).toInstant()))
+		List<LocalDate> dates = weekendsRepository.findByIsDayOffAndCalendarDateBetween(false, Date.from(date.atStartOfDay(ZoneId.systemDefault()).toInstant()), Date.from(date.plusDays(date.lengthOfMonth()-1).atStartOfDay(ZoneId.systemDefault()).toInstant()))
 				.stream()
-				.filter(i -> i.isDayOff() == false)
+				//.filter(i -> i.isDayOff() == false)
 				.map(i -> i.getCalendarDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate())
 				.toList(); // Нужна Java 17
 

@@ -12,5 +12,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface WeekendsRepository extends JpaRepository<Weekend, Long> {
 
-	List<Weekend> findByCalendarDateBetween(Date startDate, Date endDate);
+	List<Weekend> findByIsDayOffAndCalendarDateBetween(boolean isDayOff, Date startDate, Date endDate);
 }

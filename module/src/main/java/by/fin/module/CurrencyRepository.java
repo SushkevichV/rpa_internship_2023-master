@@ -10,8 +10,6 @@ public interface CurrencyRepository extends JpaRepository<Currency, Long> {
 
 	List<Currency> findByCurAbbreviation(String curAbbreviation);
 
-	List<Currency> findByDate(LocalDate date);
-
 	List<Currency> findByCurAbbreviationAndDateBetween(String curAbbreviation, LocalDate start, LocalDate end);
 	
 }
